@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <wellijohn.org.varchart.hor_bar_with_line_chart.ChartLine
+        android:id="@+id/chartline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:default_x_visible_num="4.2"
+        app:y_interval="40dp"
+        app:y_num_text_max_width="56dp" />
+
+</android.support.constraint.ConstraintLayout>

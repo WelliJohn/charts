@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ChartLine">
+        <attr name="y_visible_num" format="integer" />
+        <attr name="default_x_visible_num" format="float" />
+        <attr name="y_interval" format="dimension" />
+        <attr name="y_num_text_max_width" format="dimension" />
+        <attr name="y_num_right_paddig" format="dimension" />
+
+    </declare-styleable>
+
+    <declare-styleable name="OverLayBarChartLine">
+        <attr name="overlay_y_visible_num" format="integer" />
+        <attr name="overlay_default_x_visible_num" format="float" />
+        <attr name="overlay_y_interval" format="dimension" />
+        <attr name="overlay_y_num_text_max_width" format="dimension" />
+        <attr name="overlay_y_num_right_paddig" format="dimension" />
+    </declare-styleable>
+</resources>

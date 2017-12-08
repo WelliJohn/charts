@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <wellijohn.org.varchart.beizcurve.BeizCurve
+        android:id="@+id/beiz_curve"
+        android:layout_width="300dp"
+        android:layout_height="300dp" />
+
+</android.support.constraint.ConstraintLayout>

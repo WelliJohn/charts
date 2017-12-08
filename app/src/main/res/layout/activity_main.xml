@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="wellijohn.org.charts.MainActivity">
+
+    <Button
+        android:id="@+id/button_pie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="跳转到饼状图" />
+
+    <Button
+        android:id="@+id/button_beiz"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="跳转到贝塞尔曲线图"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/button_hor_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="跳转到水平多柱状图" />
+
+    <Button
+        android:id="@+id/button_overlay_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="跳转到叠加多柱状图" />
+
+    <Button
+        android:id="@+id/button_line"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="跳转到多曲线图" />
+
+
+</LinearLayout>
