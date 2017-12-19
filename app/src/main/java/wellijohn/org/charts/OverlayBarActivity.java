@@ -5,14 +5,12 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import wellijohn.org.varchart.exception.YCoordinateException;
 import wellijohn.org.varchart.overlay_bar_with_line_chart.OverLayBarChartLine;
-import wellijohn.org.varchart.utils.DoubleUtils;
 import wellijohn.org.varchart.vo.CategoryVo;
 import wellijohn.org.varchart.vo.DotVo;
 
@@ -54,18 +52,9 @@ public class OverlayBarActivity extends AppCompatActivity {
         initView();
         initMulTestData();
         initCategoryList();
-        mMaxDiv = DoubleUtils.getLargerInterger(mMax, 5);
 
-        Log.d(DoubleUtils.TAG, "onCreate----------------: " + mMaxDiv);
-
-        mYDotsList.add(0 * mMaxDiv);
-        mYDotsList.add(1 * mMaxDiv);
-        mYDotsList.add(2 * mMaxDiv);
-        mYDotsList.add((new BigDecimal(3 * mMaxDiv)).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue());
-        mYDotsList.add(4 * mMaxDiv);
-        mYDotsList.add(5 * mMaxDiv);
         try {
-            mOverlayChartLine.setYdots(mYDotsList).setXdots(mXdots).setAnimationOpen(true).
+            mOverlayChartLine.setYAxisMaxValue(mMax).setXdots(mXdots).setAnimationOpen(true).
                     setListDisDots(mMulListDisDots).setCategoryList(mCategoryList).reDraw();
         } catch (YCoordinateException e) {
             Log.d("MainActivity", "onCreate: ");

@@ -61,7 +61,7 @@ public class LineActivity extends AppCompatActivity{
         mYDotsList.add(4 * mMaxDiv);
         mYDotsList.add(5 * mMaxDiv);
         try {
-            mOverlayChartLine.setYdots(mYDotsList).setXdots(mXdots).setAnimationOpen(true).setListDisDots(mMulListDisDots).reDraw();
+            mOverlayChartLine.setXdots(mXdots).setAnimationOpen(true).setListDisDots(mMulListDisDots).reDraw();
         } catch (YCoordinateException e) {
             Log.d("MainActivity", "onCreate: ");
             e.printStackTrace();

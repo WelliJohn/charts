@@ -5,14 +5,12 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import wellijohn.org.varchart.exception.YCoordinateException;
 import wellijohn.org.varchart.hor_bar_with_line_chart.ChartLine;
-import wellijohn.org.varchart.utils.DoubleUtils;
 import wellijohn.org.varchart.vo.CategoryVo;
 import wellijohn.org.varchart.vo.DotVo;
 
@@ -39,10 +37,6 @@ public class HorBarActivity extends AppCompatActivity {
             "10/25", "10/26", "10/27", "10/28", "10/29", "10/01", "10/02", "10/23至08/18",
     };
 
-    private ArrayList<Double> mYDotsList = new ArrayList<>();
-
-    private double mMaxDiv;
-
     private double mMax = 44;
 
     private Random rand = new Random();
@@ -57,18 +51,8 @@ public class HorBarActivity extends AppCompatActivity {
         initView();
         initMulTestData();
         initCategoryList();
-        mMaxDiv = DoubleUtils.getLargerInterger(mMax, 5);
-
-        Log.d(DoubleUtils.TAG, "onCreate----------------: " + mMaxDiv);
         try {
-
-            mYDotsList.add(0 * mMaxDiv);
-            mYDotsList.add(1 * mMaxDiv);
-            mYDotsList.add(2 * mMaxDiv);
-            mYDotsList.add((new BigDecimal(3 * mMaxDiv)).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue());
-            mYDotsList.add(4 * mMaxDiv);
-            mYDotsList.add(5 * mMaxDiv);
-            mChartline.setYdots(mYDotsList).setXdots(mXdots).setAnimationOpen(true).setListDisDots(mMulListDisDots).
+            mChartline.setYAxisMaxValue(mMax).setXdots(mXdots).setAnimationOpen(true).setListDisDots(mMulListDisDots).
                     setCategoryList(mCategoryList).reDraw();
         } catch (YCoordinateException e) {
             Log.d("MainActivity", "onCreate: ");
@@ -78,6 +62,17 @@ public class HorBarActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * 柱状图的数据，是一个list，一个CategoryVo，就是一列中增加一个柱状
+     * CategoryVo：{
+     * <p>
+     * 卡券类目的名称
+     * private String categoryName;
+     * <p>
+     * 每个卡券类目的值
+     * private List<String> categoryValueList;
+     * }
+     */
     private void initCategoryList() {
         mCategoryList = new ArrayList<>();
         mCategoryList.add(new CategoryVo());
@@ -85,6 +80,11 @@ public class HorBarActivity extends AppCompatActivity {
         mCategoryList.add(new CategoryVo());
     }
 
+
+    /**
+     * 初始化曲线图,private List<List<DotVo>> mMulListDisDots;
+     * List<DotVo>>就是一条曲线图，
+     */
     private void initMulTestData() {
         mMulListDisDots = new ArrayList<>();
 
@@ -113,6 +113,6 @@ public class HorBarActivity extends AppCompatActivity {
 
 
     private void initView() {
-        mChartline = (ChartLine) findViewById(R.id.chartline);
+        mChartline = findViewById(R.id.chartline);
     }
 }

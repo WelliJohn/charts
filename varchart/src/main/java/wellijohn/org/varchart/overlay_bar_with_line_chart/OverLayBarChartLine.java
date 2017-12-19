@@ -25,6 +25,7 @@ import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.widget.OverScroller;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -33,9 +34,10 @@ import java.util.Map;
 
 import wellijohn.org.varchart.R;
 import wellijohn.org.varchart.exception.YCoordinateException;
+import wellijohn.org.varchart.utils.DoubleUtils;
+import wellijohn.org.varchart.utils.UiUtils;
 import wellijohn.org.varchart.vo.CategoryVo;
 import wellijohn.org.varchart.vo.DotVo;
-import wellijohn.org.varchart.utils.UiUtils;
 
 /**
  * @author: JiangWeiwei
@@ -217,6 +219,14 @@ public class OverLayBarChartLine extends View {
      * 0-1
      */
     private float mPhaseY;
+    /**
+     * Y轴的最大值
+     */
+    private double mYAxisMaxValue;
+    /**
+     * Y轴每一栏代表的数值
+     */
+    private double mMaxDiv;
 
     public OverLayBarChartLine(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
@@ -226,7 +236,7 @@ public class OverLayBarChartLine extends View {
         super(context, attrs, defStyleAttr);
         initPaint();
         mContentRect = new Rect();
-        mMaxRightScrollDis = 0;
+        this.mYdots = new ArrayList<>();
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.OverLayBarChartLine);
         mYvisibleNum = ta.getInt(R.styleable.OverLayBarChartLine_overlay_y_visible_num, 6);
         mDefXMaxNum = ta.getFloat(R.styleable.OverLayBarChartLine_overlay_default_x_visible_num, 5);
@@ -331,11 +341,15 @@ public class OverLayBarChartLine extends View {
     }
 
 
-    //设置y轴的坐标的显示
-    public OverLayBarChartLine setYdots(ArrayList<Double> paramYdots) {
-        this.mYdots = paramYdots;
+    //设置y轴最大值
+    public OverLayBarChartLine setYAxisMaxValue(double paramYAxisMaxValue) {
+        this.mMaxDiv = DoubleUtils.getLargerInterger(paramYAxisMaxValue, this.mYvisibleNum);
+        for (int i = 0; i < this.mYvisibleNum; i++) {
+            this.mYdots.add((new BigDecimal(i * this.mMaxDiv)).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue());
+        }
         return this;
     }
+
 
     //设置x点的坐标的显示
     public OverLayBarChartLine setXdots(String[] paramXdots) {
@@ -364,14 +378,10 @@ public class OverLayBarChartLine extends View {
                 }
             }
         }
-        // TODO: 2017/11/15 这里可以设定Y轴的间距 By JiangWeiwei
-        mYinterval = UiUtils.dip2px(getContext(), 40);
-
         mScroller = new OverScroller(getContext(), new FastOutLinearInInterpolator());
         mScreenHeight = UiUtils.getScreenHeight(getContext());
         mScreenWidth = UiUtils.getScreenWidth(getContext());
         mXvisibleNum = mXdots.length > mDefXMaxNum ? mDefXMaxNum : mXdots.length;
-        mYvisibleNum = mYdots.size() - 1;
         mXinterval = (mScreenWidth - getLeft() - mLeftTextWidth) / mXvisibleNum;
         mIsInitDataSuc = true;
         mYOffset = getYMaxTextHeight() / 2;
