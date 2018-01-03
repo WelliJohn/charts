@@ -244,4 +244,4 @@ public static ControlPonits getControlPoints(double x0, double y0, double x1, do
     }
 ```
 [*github地址*](https://github.com/WelliJohn/charts)<br>
-**如果大家有好的想法的话，希望能够交流下,如果你们觉得文章对你自定义view有帮助，希望你们帮忙点个赞或者关注下，谢谢**
+**如果大家有好的想法的话，希望能够交流下,如果你们觉得文章对你自定义view有帮助，希望你们帮忙star下，谢谢**
