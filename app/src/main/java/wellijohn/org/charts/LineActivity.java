@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import wellijohn.org.varchart.exception.YCoordinateException;
 import wellijohn.org.varchart.overlay_bar_with_line_chart.OverLayBarChartLine;
 import wellijohn.org.varchart.utils.DoubleUtils;
 import wellijohn.org.varchart.vo.DotVo;
@@ -48,8 +47,8 @@ public class LineActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_overlay_bar);
 
-        initView();
-        initMulTestData();
+//        initView();
+//        initMulTestData();
         mMaxDiv = DoubleUtils.getLargerInterger(mMax, 5);
 
         Log.d(DoubleUtils.TAG, "onCreate----------------: " + mMaxDiv);
@@ -60,12 +59,12 @@ public class LineActivity extends AppCompatActivity{
         mYDotsList.add((new BigDecimal(3 * mMaxDiv)).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue());
         mYDotsList.add(4 * mMaxDiv);
         mYDotsList.add(5 * mMaxDiv);
-        try {
-            mOverlayChartLine.setXdots(mXdots).setAnimationOpen(true).setListDisDots(mMulListDisDots).reDraw();
-        } catch (YCoordinateException e) {
-            Log.d("MainActivity", "onCreate: ");
-            e.printStackTrace();
-        }
+//        try {
+//            mOverlayChartLine.setXdots(mXdots).setAnimationOpen(true).setListDisDots(mMulListDisDots).reDraw();
+//        } catch (YCoordinateException e) {
+//            Log.d("MainActivity", "onCreate: ");
+//            e.printStackTrace();
+//        }
 
     }
 

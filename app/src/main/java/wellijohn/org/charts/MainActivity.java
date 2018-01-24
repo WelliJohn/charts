@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import wellijohn.org.charts.bean.ChildBean;
+
 public class MainActivity extends AppCompatActivity {
 
     private Button mButtonPie;
@@ -26,7 +28,13 @@ public class MainActivity extends AppCompatActivity {
         mButtonPie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, PercentActivity.class));
+                Intent intent = new Intent(MainActivity.this, PercentActivity.class);
+                ChildBean childBean = new ChildBean();
+                childBean.setChildName("WelliJohn");
+                childBean.setPrice(99.9);
+                childBean.setName("JianMin");
+                intent.putExtra("key",childBean);
+                startActivity(intent);
             }
         });
         mButtonBeiz.setOnClickListener(new View.OnClickListener() {
