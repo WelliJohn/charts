@@ -1,6 +1,6 @@
 
 ## APK下载地址
-![chart](https://github.com/WelliJohn/charts/blob/master/imgs/QR_code_336.png?raw=true)
+![chart](https://github.com/WelliJohn/charts/blob/master/imgs/QR_code_258.png?raw=true)
 ## 1.效果图
 ![image](https://user-gold-cdn.xitu.io/2017/12/18/16068f0ee955ccd9?w=283&h=500&f=gif&s=1237535)
 ## 2.各种图表的使用方式
