@@ -4,12 +4,10 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import wellijohn.org.charts.bean.ChildBean;
 import wellijohn.org.varchart.circlepercentchart.CirclePercentChart;
 import wellijohn.org.varchart.circlepercentchart.exception.PercentOverFlowException;
 import wellijohn.org.varchart.circlepercentchart.vo.ArcVo;
@@ -29,8 +27,6 @@ public class PercentActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_percent);
-        ChildBean childBean = ((ChildBean)(getIntent().getParcelableExtra("key")));
-        Log.d("PercentActivity", "onCreate: "+childBean.toString());
         initView();
         initTestData();
 
