@@ -232,12 +232,19 @@ public class ChartLine extends View {
     private double mMaxDiv;
 
 
+    private int blue;
+    private int red;
+    private int yellow;
     public ChartLine(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
     public ChartLine(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        blue = ContextCompat.getColor(getContext(), R.color.app_blue);
+        red = ContextCompat.getColor(getContext(), R.color.app_red);
+        yellow = ContextCompat.getColor(getContext(), R.color.yellow_light);
+
         initPaint();
         mContentRect = new Rect();
         this.mYdots = new ArrayList<>();
@@ -597,14 +604,14 @@ public class ChartLine extends View {
                 float mTableStartYOffset = (float) (mLastHorLineY + mYinterval + mYinterval * barIndex);
                 String barValue = tempCategoryVo.getCategoryName();
                 if (barIndex == 0) {
-                    mLeftDotPaint.setColor(ContextCompat.getColor(getContext(), R.color.app_blue));
+                    mLeftDotPaint.setColor(blue);
                 }
 
                 if (barIndex == 1) {
-                    mLeftDotPaint.setColor(ContextCompat.getColor(getContext(), R.color.yellow_light));
+                    mLeftDotPaint.setColor(yellow);
                 }
                 if (barIndex == 2) {
-                    mLeftDotPaint.setColor(ContextCompat.getColor(getContext(), R.color.app_red));
+                    mLeftDotPaint.setColor(red);
                 }
 
 
@@ -675,14 +682,14 @@ public class ChartLine extends View {
                     CategoryVo tempCategoryVo = mCategoryList.get(barIndex);
                     String barValue = tempCategoryVo.getCategoryValueList().get(x);
                     if (barIndex == 0) {
-                        mBarPaint.setColor(ContextCompat.getColor(getContext(), R.color.app_blue));
+                        mBarPaint.setColor(blue);
                     }
 
                     if (barIndex == 1) {
-                        mBarPaint.setColor(ContextCompat.getColor(getContext(), R.color.yellow_light));
+                        mBarPaint.setColor(yellow);
                     }
                     if (barIndex == 2) {
-                        mBarPaint.setColor(ContextCompat.getColor(getContext(), R.color.app_red));
+                        mBarPaint.setColor(red);
                     }
 
                     canvas.drawLine(tempBarStartX, mLastHorLineY, tempBarStartX, (float) (mLastHorLineY - Double.valueOf(barValue) * getIntervalPerInch()), mBarPaint);
